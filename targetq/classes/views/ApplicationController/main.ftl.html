@@ -1,0 +1,61 @@
+<html>
+   <head>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/service.js"></script>
+	
+	 <script src="../../assets/js/controller.js"></script>
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../assets/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body onload="initialize()">
+<div class="container-fluid">
+<div ng-app="mainApp"  ng-controller="MyController" ">
+<h1 style="padding:17px 300px 17px 430px ;background:#e60000;color:white">Book Management System</h1>
+
+
+
+<div style="padding-top:60px">
+<h3 style="padding-left:560px;background:#e60000;color:white">Book Entries</h3>
+
+</div>
+<div style="padding-top:0px">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Book Name</th>
+        <th>Author</th>
+		<th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+	<tr  ng-repeat="Book in BookList |  orderBy:'id'"  >  
+                <td>{{Book.id}}</td>  
+                <td><label ng-hide="Book.editMode">{{Book.name}}</label> <input ng-show="Book.editMode"  ng-model="Book.name"></td>  
+                <td><label ng-hide="Book.editMode">{{Book.author}}</label> <input ng-show="Book.editMode"  ng-model="Book.author"></td> 
+				<td><label ng-hide="Book.editMode">{{Book.price}}</label> <input type="number" ng-show="Book.editMode"  ng-model="Book.price"></td>
+				<td ng-show="!Book.editMode"><button type="button" class="btn btn-danger" ng-click="Book.editMode=true" />Edit</td>
+				<td ng-show="Book.editMode"><button type="button" class="btn btn-danger" ng-click="UpdateData(Book)" />Save</td>
+				<td ng-show="Book.editMode"><button type="button" class="btn btn-danger" ng-click="Book.editMode=False" />Cancel</td>
+                <td ng-show="!Book.editMode"><button type="button" class="btn btn-danger" ng-click="DeleteData(Book)" />Delete</td>  
+            </tr>
+	<tr>
+	  <td><input type="text" ng-model="Id1" /></td>
+	  <td><input type="text" ng-model="Name1" /></td>
+	  <td><input type="text" ng-model="Author1" required/></td> 
+      <td><input type="number" ng-model="Price1" required/></td>
+      <td><button type="button" class="btn btn-danger"  ng-click="AddData()">Add</button></td>
+	  <td></td>
+	  <td></td>
+	  </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+	
+	
+</body>
+</html>

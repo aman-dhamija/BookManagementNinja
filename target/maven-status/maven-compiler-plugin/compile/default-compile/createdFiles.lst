@@ -1,0 +1,7 @@
+controllers\ApplicationController.class
+entity\Book.class
+conf\Routes.class
+models\GuestbookEntry.class
+controllers\ApplicationController$SimplePojo.class
+entity\Admin.class
+conf\Module.class
